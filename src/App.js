@@ -21,13 +21,13 @@ function App() {
   // C todo
   // R todo
   useEffect(()=>{
-    const q= query(collection(db,'todos'))
+    const q= query(collection(db,'todo'))
     const unsubscribe= onSnapshot(q,(querySnapshot)=>{
-      let todoarr=[]
+      let todosarr=[]
       querySnapshot.forEach((doc)=>{
-        todoarr.push({...doc.data(), id: doc.id})
+        todosarr.push({...doc.data(), id: doc.id})
       });
-      setTodos(todoarr)
+      setTodos(todosarr)
     })
     return()=> unsubscribe()
   },[])
